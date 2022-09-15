@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>C+++ - A Specification</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <h1>
+        C++++ - A Specification
+    </h1>
+    <p>
+        This is the official (but not formal) specification for the C++++ programming language! Although it's intended
+        to be used by people wishing to implement a C++++
+        compiler, it can also be used by developers wishing to write C++++ programs. As a result, this document will not
+        assume which position that you, the reader, takes.
+        Instead, I'll refer to C++++ developers and compiler vendors as separate entities in this document.
+    </p>
+    <p>
+        A pattern that you might encounter within this specification is the lack of formal language. We still don't know
+        how to write formal documents yet so you'll just have to deal with it. But we will try to make this document as
+        unambiguous
+        as possible to avoid language confusion and compiler-specific functionalities.
+    </p>
+    <h2>
+        Background
+    </h2>
+    <p>
+        Basically, C++++ is this system programming language that I created since I was bored. It started in late 2022
+        and, as of right now, currently does not possess
+        a reference implementation. The language is currently merely a specification that anyone can implement if they
+        wanted to.
+    </p>
+    <p>
+        Now, C++++ is a compiled language and should not be used as an interpreted language, though nothing is gonna
+        prevent
+        you from implementing a C++++ interpreter so if you wanted to, go ahead. However, as you will see layer,
+        implementing
+        C++++ as an interpreted language might be more difficult than a language designed for use as an interpreter,
+        like
+        Python.
+    </p>
+    <p>
+        Another thing to note about C++++ is that, despite the name, it is not backwards compatible with neither C nor
+        C++.
+        We have chosen to remove backwards-compatibility with C/C++ because if we're just gonna create a superset of
+        C++,
+        we might as well just propose a change to the C++ Standards Commitee.
+    </p>
+    <h3>
+        Etymology
+    </h3>
+    <p>
+        pls dont sue us microsoft
+    </p>
+    <h2>
+        Language Conventions
+    </h2>
+    <h3>
+        Naming Conventions
+    </h3>
+    <p>
+        There are certain naming conventions used within the C++++ standard library and the rest of the language. These
+        naming conventions are generally followed with a few
+        exceptions (like, for example, the integer naming conventions).
+    </p>
+    <ul>
+        <li>
+            Everything is named with <i>snake casing</i> (i.e. <code>get_internal_states</code>).
+        </li>
+        <li>
+            All the letters in the name of a constant are uppercase (i.e. <code>MAXIMUM_PORT_NUMBER</code>).
+        </li>
+        <li>
+            All types are postfixed with <code>_t</code> (i.e. <code>dynamic_array_t</code>)
+        </li>
+        <li>
+            The usage of abbreviations are kept to a minimum.
+        </li>
+    </ul>
+    <p>
+        Please note that although the language and the standard library almost always abide to these naming conventions,
+        developers are not required or encouraged to use them. However, to maintain consistency within the language,
+        compiler vendors implementing extensions are recommended to follow these conventions whenever possible.
+    </p>
+    <h2>
+        Extensions
+    </h2>
+    <p>
+        Extensions are a way for the implementors of C++++ compilers to insert their own features into the language
+        and developers to use those extensions easily. Other multi-implementation languages, like C++, does have
+        extensions as well, but since the language doesn't have a <i>concept</i> of an extension, the difficulty of
+        checking for the existence of an extension often outweighs the benifits the extensions provide. C++++, however,
+        have standard support for extensions, allowing developers to easily take advantage of them.
+    </p>
+    <p>
+        Although compiler vendors can name their extensions however they'd like, it is strongly recommended that
+        extension
+        names uses snake casing (for consistency with the standard extensions and the rest of the language) and are
+        prefixed
+        with the compiler vendors's names (to avoid name collisions).
+    </p>
+    <p>
+        There are also <i>standard extensions</i>, basically extensions that are part of the standard C++++
+        specification
+        but are not neccessarily required in an implementation of C++++. Any compiler vendor can implement any standard
+        extensions,
+        and they choose not to do so as well. Standard extensions allows us, the language designers, to add features
+        that may
+        not be applicable in every usage setting of the C++++ programming language.
+    </p>
+    <h3>
+        Using extensions
+    </h3>
+    <p>
+        To use any extensions, standard or not, the extension in question must first be manually enabled by the
+        developer. This
+        is to prevent developers from accidentally using a feature that is part of an extension thinking that it is part
+        of the
+        core language.
+    </p>
+    <p>
+        The first method for enabling extensions is by using the <code>extension</code> statement in the C++++ source
+        file. This will
+        enable the extension for the entire file, but only within the file in which the statement resides within. The
+        syntax of this
+        method is shown below.
+    </p>
+    <code>
+extension <i>extension_name</i>;
+    </code>
+    <p>
+        Compiler vendors can also choose to add compiler flags for enabling extensions.
+    </p>
+    <h2>
+        Fundamental Language Features
+    </h2>
+    <p>
+        This section will describe some of the most common language features in the world of programming, like
+        variables, functions, etc.
+        It is going to be mainly a description of how C++++ implements a lot of these features rather than an
+        explanation of the concepts
+        themselves.
+    </p>
+    <h3>
+        Data Types
+    </h3>
+    <p>
+        Because C++++ is a statically typed language, there are often cases in which the developer needs to specify data
+        types. C++++ has a number of data types built in to the
+        language itself.
+    </p>
+    <h4>
+        Integer Types
+    </h4>
+    <p>
+        Integers are numeric values that does not contain fractional components. C++++ offers both signed and unsigned integers.
+    </p>
+    <p>
+        Below is a list of all the integer types offered by C++++.
+    </p>
+    <table>
+        <tr>
+            <th>
+                "In-Code" Name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <code>int8_t</code>
+            </td>
+            <td>
+                8-bit signed integer
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>int16_t</code>
+            </td>
+            <td>
+                16-bit signed integer
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>int32_t</code>
+            </td>
+            <td>
+                32-bit signed integer
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>int64_t</code>
+            </td>
+            <td>
+                64-bit signed integer
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>uint8_t</code>
+            </td>
+            <td>
+                8-bit unsigned integer
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>uint16_t</code>
+            </td>
+            <td>
+                16-bit unsigned integer
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>uint32_t</code>
+            </td>
+            <td>
+                32-bit unsigned integer
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>uint64_t</code>
+            </td>
+            <td>
+                64-bit unsigned integer
+            </td>
+        </tr>
+    </table>
+    <h3>
+        Functions
+    </h3>
+    <p>
+        Functions, sometimes known as <i>procedures</i> in some languages, are collections of code that can be executed.
+        The syntax for a
+        function is shown below.
+    </p>
+    <code>
+function name(parameter_name: type, ...) -> return_type_t
+{
+    // Function body
+    // ...
+}
+    </code>
+    <!-- TODO: Add a more detailed description of functions -->
+    <p>
+        To summarize:
+    </p>
+    <ul>
+        <li>
+            <code>function</code> is a built-in keyword of the C++++. It is used to declare a function.
+        </li>
+        <li>
+            <code>name</code> is the name of the function. This name may not reflect the actual name of the function in
+            the compiled binary, as compilers are free to mangle function names for various purposes.
+        </li>
+        <li>
+            <code>parameter_name</code> is the name of one of the parameters of the function, which are data passed to
+            the function when it's <i>called</i>.
+        </li>
+        <li>
+            The <code>type</code> is the <i>data type</i> of <code>parameter_name</code>. C++++ is a statically typed
+            language, and as a result the types of all the function parameters must be known at compile time.
+        </li>
+        <li>
+            <code>return_type_t</code> is the data type of the return value of the function. Omit the return type to
+            indicate that the function does not return a value.
+        </li>
+    </ul>
+</body>
+
+</html>

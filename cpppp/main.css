@@ -1,0 +1,60 @@
+body {
+    max-width: 48em;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+h1 {
+    font-size: 48pt;
+}
+
+h2 {
+    font-size: 36pt;
+}
+
+h3 {
+    font-size: 24pt;
+}
+
+h4 {
+    font-size: 16pt;
+}
+
+p, li, table {
+    font-size: 14pt;
+}
+
+table, th, td {
+    border-width: 0.05em;
+    border-color: black;
+    border-style: solid;
+}
+
+th, td {
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+table {
+    background-color: black;
+    text-align: center;
+}
+
+td {
+    background-color: white;
+}
+
+th {
+    color: white;
+}
+
+code {
+    font-family: monospace;
+    font-size: 14pt;
+    white-space: pre;
+}
